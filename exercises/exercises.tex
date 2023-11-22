@@ -395,9 +395,9 @@ We should expect to get the event E occured(at least once) after $67$ throws.
    Where $T$ means tails and $H$ means head
    
    \begin{itemize}
-   \item[•]Let  $A$ "Both flips got head".
+   \item[•]Let  $A$= "Both flips got head".
    
-   $P(A)=\frac{1}{4}$
+   $\mathbb{P}(A)=\frac{1}{4}$
    
    \item[•] Let us compute the expected earn after playing $100$ times
    \begin{itemize}
@@ -410,14 +410,12 @@ We should expect to get the event E occured(at least once) after $67$ throws.
    
    \end{itemize}
    
-   The expected amount to earn for a game if we do not consider the bet is 
-  
+The expected amount to earn for a game if we do not consider the bet is 
 \begin{align*}
 E_1 &=100\times \frac{1}{4}-60\times \frac{1}{4}+0 \times \frac{1}{2}\\
        &=25-15+0\\
        &=10
 \end{align*}
-
 By considering the bet, the expected amount to earn for a game is. 
 
 $E_2=E_1-20=10-20=-10$
@@ -431,10 +429,8 @@ E &=E_1\times 100-20\\
        &=1000-20\\
        &=980
 \end{align*} 
-
 Then after playing the game 100 times, if we suppose that we bet the 20 DHS just once, we will epect to earn 980 DHS.
-   
-   \end{itemize}
+\end{itemize}
    
    
 \newpage 
@@ -452,11 +448,11 @@ Let us consider the random variable Y defined from $\Omega$ to the set of possib
     \section{Exercise 4}
     
     Let $X$ be a random variable such that
-    $ P[(a, b)] = b − a, 0 \lt a \lt b \lt 1]$
+    $ \mathbb{P}[(a, b)] = b - a, 0 \lt a \lt b \lt 1$
     
     \subsection{Let us find the PDF $f$ of $X$}
     
-    Firstly, let us find the CDF $F$ of $X$
+    Firstly, let us find the \textbf{CDF}  $F$ of $X$
     
     Let $t \in \mathbb{R}$
     
@@ -533,8 +529,7 @@ f(t)=F'(t) &= \begin{cases}
 \newpage 
     \section{Exercise 5}
     
-    Let us suppose a random variable $X$ has it's CDF defined by:\\
-    
+    Let us suppose a random variable $X$ has it's \textbf{CDF} defined by: 
 \begin{align*}
 F(x) = \begin{cases}
             0 & \text{if } x \lt 0\\
@@ -566,40 +561,34 @@ F(x) = \begin{cases}
     
     
 \subsection{Let's compute the following probabilities}
-\subsubsection*{a)$P(-50\lt X \lt 50)$}
+\subsubsection*{a)$\mathbb{P}(-50\lt X \lt 50)$}
 \begin{align*}
-P(-50\lt X \lt 50) &=F(50)-F(-50)\\
+\mathbb{P}(-50\lt X \lt 50) &=F(50)-F(-50)\\
 \end{align*}
-
 \begin{align*}
 50\in  \left[0 ; 100\right] \Rightarrow F(50)&=\frac{50}{200}\\
  &=\frac{1}{4}
 \end{align*}
-
-
 \begin{align*}
 -50\in  \left]-\infty ; 0\right[ \Rightarrow F(-50)&=0
 \end{align*}
-
 Then we have
 \begin{align*}
-P(-50\lt X \lt 50) &=\frac{1}{4}-0\\
+\mathbb{P}(-50\lt X \lt 50) &=\frac{1}{4}-0\\
 				  &=\frac{1}{4}
 \end{align*}
 
-\subsubsection*{b)$P(X=0)$}
-
+\subsubsection*{b)$\mathbb{P}(X=0)$}
 \begin{align*}
-P(X=0) &=F(0)-\lim_{{x \to 0^-}} F(x)\\	
+\mathbb{P}(X=0) &=F(0)-\lim_{{x \to 0^-}} F(x)\\	
        &=\frac{0}{200}-\lim_{{x \to 0^-}} 0\\
        &=0
 \end{align*}
 
 
-\subsubsection*{c)$P(X=100)$}
-
+\subsubsection*{c)$\mathbb{P}(X=100)$}
 \begin{align*}
-P(X=100) &=F(100)-\lim_{{x \to 100^-}} F(x)\\	
+\mathbb{P}(X=100) &=F(100)-\lim_{{x \to 100^-}} F(x)\\	
        &=1-\lim_{{x \to 100^-}} \frac{x}{200}\\
        &=1-\frac{100}{200}\\
        &=1-\frac{1}{2}\\
@@ -608,7 +597,7 @@ P(X=100) &=F(100)-\lim_{{x \to 100^-}} F(x)\\
 
 \newpage 
     \section{Exercise 6}
-    Let us suppose a random variable $X$ has it's PDF defined by:\\
+    Let us suppose a random variable $X$ has it's \textbf{PDF} defined by:\\
     
 \begin{align*}
 f(x) = \begin{cases}
@@ -616,15 +605,12 @@ f(x) = \begin{cases}
             0 & \text{if } x \gt 10.
         \end{cases}
 \end{align*}
+Let us find $\mathbb{P}(7 \lt X \lt 15)$
 
-
-
-Let us find $P(7 \lt X \lt 15)$
-
-Let us note $F$ the CDF of $X$
+Let us note $F$ the \textbf{CDF} of $X$
 
 \begin{align*}
-P(7 \lt X \lt 15) &= F(15)-F(7) \\
+\mathbb{P}(7 \lt X \lt 15) &= F(15)-F(7) \\
 \end{align*}
 $\forall x\ge 0 $, we have:
 \begin{align*}
@@ -645,9 +631,7 @@ F(x) &=\int_{0}^x 2kt^2dt\\
 &=\frac{2}{3}k\left[t^3\right]_0^x \\
 &=\frac{2}{3}kx^3 \\
 \end{align*}
-
 \item[•] If $x \ge 10$, then we have:
-
 \begin{align*}
 F(x) &=\int_{0}^{10} f(t)dt+\int_{10}^x f(t)dt\\
 &=\int_{0}^{10} f(t)dt+0\\
@@ -665,11 +649,7 @@ F(x) = \frac{2}{3}k\begin{cases}
             1000 & \text{if } x \gt 10.
         \end{cases}
 \end{align*}
-
-
-
 Let us determine $k$.
-
 \begin{align*}
 \int_\mathbb{R} f(t)dt &=\int_\mathbb{-\infty}^0 f(t)dt + \int_0^{10} f(t)dt +\int_{10}^{+\infty} f(t)dt\\
 				  &=0+ \int_0^{10} 2kt^2dtdt+0\\
@@ -680,7 +660,6 @@ Let us determine $k$.
 				  				  								  &=\frac{2k}{3}(1000)\\
 				  				  								  &=\frac{2000k}{3}\\
 \end{align*}
-
 $f$ is a PDF, then $\int_\mathbb{R} f(t)dt=1$
 
  \begin{align*}
@@ -688,10 +667,7 @@ $f$ is a PDF, then $\int_\mathbb{R} f(t)dt=1$
  			 &\Rightarrow 2000k=3\\
  			 &\Rightarrow k=\frac{3}{2000}\\  
 \end{align*}
-
-
 And then
-
 \begin{align*}
 F(x) &= \frac{2}{3}\times \frac{3}{2000} \begin{cases}
             x^3 & \text{if } 0 \leq x \leq 10 \\
@@ -706,49 +682,38 @@ F(x) &= \frac{2}{3}\times \frac{3}{2000} \begin{cases}
             1 & \text{if } x \gt 10.
         \end{cases}\\        
 \end{align*}
-
-
 $15 \gt 10 $ then $F(15)=1$
 
 $7 \in \left[0 ; 10\right] $ then $F(7)=\frac{7^3}{1000}=\frac{343}{1000}$
 \begin{align*}
-P(7 \lt X \lt 15) &= F(15)-F(7) \\
-`                 &=1-\frac{343}{1000}\\ 
+\mathbb{P}(7 \lt X \lt 15) &= F(15)-F(7) \\
+                 &=1-\frac{343}{1000}\\ 
  			 	  &=\frac{1000-343}{1000}\\
  			 	  &= 3\times \frac{16}{2000}\\
  			 	  &= \frac{357}{1000}\\  
-\end{align*}
-
-
-
-
-    
-    
-    
+\end{align*}  
     
 \newpage 
     \section{Exercise 7}
     Let 
     \begin{itemize}
-    \item[•] X be a random variable with f as PDF, such that
+    \item[•] X be a random variable with f as \textbf{PDF}, such that
       $ f(t)=\frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}t^2 ) ; t\in \mathbb{R}$
       \item[•] $Y=X^2$ another random variable.
-      \item[•] $F_X$ the CDF of X
-      \item[•] $F_Y$ the CDF of Y
-      \item[•] $f_Y$ the PDF of Y
+      \item[•] $F_X$ the \textbf{CDF} of X
+      \item[•] $F_Y$ the \textbf{CDF} of Y
+      \item[•] $f_Y$ the \textbf{PDF} of Y
     \end{itemize}
     Let us show that $f_Y(y)=\frac{1}{\sqrt{2\pi y}}\exp(-\frac{y}{2}) \forall t\in \mathbb{R}$
    $\forall t\in \mathbb{R}$, we have:
-   
-\begin{align*}
-    F_Y(t) &= P(Y < t) \\
-           &= P(X^2 < t) \\
-           &= P(Y < \sqrt{t})\\
-           &= P(\lvert x \rvert < \sqrt{t}) \text{ since } X^2 \lt t \Rightarrow t \gt 0\\           
-           &= P(-\sqrt{t} \lt  \sqrt{t} \lt \sqrt{t} ) \\ 
+   \begin{align*}
+    F_Y(t) &= \mathbb{P}(Y < t) \\
+           &= \mathbb{P}(X^2 < t) \\
+           &= \mathbb{P}(Y < \sqrt{t})\\
+           &= \mathbb{P}(\lvert x \rvert < \sqrt{t}) \text{ since } X^2 \lt t \Rightarrow t \gt 0\\           
+           &= \mathbb{P}(-\sqrt{t} \lt  \sqrt{t} \lt \sqrt{t} ) \\ 
            &=  F_X(\sqrt{t})-F_X(-\sqrt{t})                    
 \end{align*}
-
 \begin{align*}
     f_Y(t) &= F_Y'(t) \\
            &= \frac{1}{2\sqrt{t}}F_X'(\sqrt{t})-(-\frac{1}{2\sqrt{t}})F_X'(\sqrt{t}) \\
@@ -770,7 +735,6 @@ Let's show that
 $Var(X)=E(X^2)-\mu^2$  where $\mu=E(X)$ 
 
 We have by definition:
-
 \begin{align*}
     Var(X) &= E([X-E(X)]^2) \\
            &= E(X^2-2XE(X)+(E(X))^2) \\
@@ -787,22 +751,19 @@ Hence the result.
 
 \newpage 
     \section{Exercise 9}
-    Let X a discrete random variable with pmf f positive at -1, 0,1 and zero elsewhere.
+    Let X a discrete random variable with \textbf{PMF} p positive at -1, 0,1 and zero elsewhere.
     \subsection{a) Let us find $E(X) \text{ if } p(0)=\frac{1}{4}$}
  \begin{align*}
   E(X^2) &= (-1)^2p(-1)+(0)^2p(0)+(1)^2p(1)+0 \\
        &=p(-1)+p(1) \\       
 \end{align*}   
-
 We have
-
 \begin{align*}
   p(-1)+p(0)+p(1)+0 &= p(-1)+p(0)+p(1)\\ 
   					&= p(-1)+\frac{1}{4}+p(1)      \text{ since } p(0)= \frac{1}{4}
 \end{align*}
 Then 
- 
-\begin{align*}
+ \begin{align*}
   p(-1)+p(1) &= 1-p(0)\\ 
   			&= 1-\frac{1}{4}\\
   			&= \frac{3}{4}\\
@@ -811,11 +772,10 @@ And then $E(X^2)=\frac{3}{4}$
 
    \subsection{a) Let us find $p(-1)\text{ and } p(1) \text{ if } p(0)=\frac{1}{4} \text{ and if } E(X)= 1$}
    
-  \begin{align*}
+\begin{align*}
   E(X) &= (-1)p(-1)+(0)p(0)+(1)p(1)+0 \\
        &=p(1)-p(-1) \\       
 \end{align*} 
-
 \begin{align*}
   E(X)= 1 & \Rightarrow p(1)-p(-1)= 1\\
        &=\Rightarrow p(1)=1+p(-1) \text{ } \textcircled{1}      
@@ -823,22 +783,18 @@ And then $E(X^2)=\frac{3}{4}$
 $p(-1)+p(0)+p(1)=1$ and $ p(0)=\frac{1}{4}$
 
 Then we get:
-
 \begin{align*}
   p(-1)+p(1) &=  1-\frac{1}{4}\\ 
  			 &= \frac{3}{4}\\    
 \end{align*}
-
 And then $p(1)=\frac{3}{4}-P(-1) \textbf{ } \textcircled{2} $
-
 \begin{align*}
   \textcircled{1} = \textcircled{2} & \Rightarrow  1+p(-1)=\frac{3}{4}-p(-1)\\ 
  			 &\Rightarrow 2p(-1)=\frac{3}{4}-1\\
  			 &\Rightarrow 2p(-1)=-\frac{1}{4}\\  
- 			 &\Rightarrow p(-1)=-\frac{1}{8} \textbf{(an error?)        }    
+ 			 &\Rightarrow p(-1)=-\frac{1}{8} \textbf{(an error???)        }    
 \end{align*}
 Hence
-
 \begin{align*}
 p(-1)&=\frac{3}{4}-p(-1)\\
 	 &=\frac{3}{4}+\frac{1}{8}\\
@@ -851,10 +807,10 @@ p(-1)&=\frac{3}{4}-p(-1)\\
 \newpage 
     \section{Exercise 10}
    
-   Let X a continous random variable with pdf f, such that $f(x)=\frac{1}{3} \text{ for } -1 \lt x \lt 2$
+   Let X a continous random variable with \textbf{PDF} f, such that $f(x)=\frac{1}{3} \text{ for } -1 \lt x \lt 2$
    
    
-   Let $M_X$ the moment generating function of $X$
+   Let $M_X$ the \textbf{MGF} of $X$
    
    Let $t \in \left]-1 ; 2\right[
  $
@@ -880,7 +836,7 @@ M_X(t) &=\frac{1}{3}[\frac{1}{t}e^{tx}]_{-1}^2 \\
  
 \newpage 
     \section{Exercise 11}
-   Let $X  \sim \mathcal B(n,p)$ and $M_X$ the MGF of $X$
+   Let $X  \sim \mathcal B(n,p)$ and $M_X$ the \textbf{MGF} of $X$
    
    Let us show that $M_X(t)=(1-p+pe^t)^n \text{ } \forall t \in \mathbb{R}$
    
@@ -894,7 +850,7 @@ We have $\mathbb{P}(X=k)=\binom{n}{k}p^k q^{n-k} \forall \text{ } k \in \{0, 1, 
 Let $t \in \mathbb{R}$
   \begin{align*}
 M_X(t) &=E(e^{tX})\\ 
-	  &=\Sigma_{i=1}^{n}{ e^{tk} P(Y=k)}\\   
+	  &=\Sigma_{i=1}^{n}{ e^{tk} \mathbb{P}(Y=k)}\\   
 	   &=\Sigma_{i=1}^{n}{ e^{tk} \binom{n}{k}p^k q^{n-k}}\\
 	   &=\Sigma_{i=1}^{n}{ p^k (e^{t})^k \binom{n}{k}q^{n-k}}\\
 	   &=\Sigma_{i=1}^{n}{(pe^{t})^k \binom{n}{k}q^{n-k}}\\
@@ -914,15 +870,14 @@ Hence the result.
    
    We have:
    
-    $P(X=k)=\frac{\lambda^{k} e^{-\lambda}}{k! } \text{ for k in } \mathbb{N}$
+    $\mathbb{P}(X=k)=\frac{\lambda^{k} e^{-\lambda}}{k! } \text{ for k in } \mathbb{N}$
    
    
-   Let $M_X$ the moment generating function of $X \textbf{ and }  t \in \mathbb{R}$
+   Let $M_X$ the \textbf{MGF} of $X$.
   
-  \subsection{Let us show that $M_X(t)=e^{\lambda(e^t-1)}$} 
-   
-  
-  \begin{align*}
+\subsection{Let us show that $M_X(t)=e^{\lambda(e^t-1)}\text{        } \forall t \in \mathbb{R}$} 
+Let $t \in \mathbb{R}$
+\begin{align*}
 M_X(t)&=E(e^tX)\\
 	&=\Sigma_{k\in \mathbb{N}  }e^{tk}\mathbb{P}(X=k)  \\
 	&=\Sigma_{k\in \mathbb{N}  }e^{tk}\frac{\lambda^{k} e^{-\lambda}}{k!}  \\
@@ -933,7 +888,6 @@ M_X(t)&=E(e^tX)\\
 $\forall x \in \mathbb{R}\text{, } e^x= \Sigma_{n\in \mathbb{N}  }\frac{x^{n}}{n!}$
 
 Then we have:
-
 \begin{align*}
 M_X(t)&=e^{-\lambda}e^{\lambda e^t}\\
 	&=e^{-\lambda+\lambda e^t}\\
@@ -950,22 +904,17 @@ Let $t \in \mathbb{R}$
 
 $E(X)=M_X'(0)$
 
-
-
 $M_X(t)=e^{\lambda( e^t-1)}$
-
 \begin{align*}
 M_X'(t)&=\lambda e^{t}e^{\lambda( e^t-1)}\\
       &=\lambda e^{t}M_X(t)
 \end{align*}
 $M_X(0)=e^{e^{0}-1}=e^0=1$
-
 \begin{align*}
 M_X'(0)&=\lambda e^{0}M_X(0)\\
 	   &=\lambda (1)\\
 	   &=\lambda\\
 \end{align*}
-
 Then $E(X)=\lambda$
 
 \item[•]Variance $Var(X)$
@@ -975,23 +924,18 @@ $var(X)=E(X^2)-(E(X))^2$ with $E(X^2)=M_X''(0)$
 \begin{align*}
 M_X''(t)&=(M_X')'(t)
 \end{align*}
-
 \begin{align*}
 M_X'(t)&=\lambda e^{t}M_X(t)\\
 \end{align*}
-
 \begin{align*}
 M_X''(t)&=\lambda[ e^{t}M_X(t)+e^{t}M_X'(t)]\\
 &=\lambda e^{t}[ M_X(t)+M_X'(t)]\\
 \end{align*}
-
-
 \begin{align*}
 M_X''(0)&=\lambda e^{0}[ M_X(0)+M_X'(0)]\\
         &=\lambda (1)[ 1+\lambda]\\
         &=\lambda (1+\lambda)\\
 \end{align*}
-
 Then $E(X^2)=\lambda (1+\lambda)$ and then 
 
 \begin{align*}
@@ -1001,12 +945,12 @@ Var(X)&=\lambda (1+\lambda)- \lambda ^2\\
 \end{align*}
 \newpage 
 \section{Exercise 13}
- Let $X  \sim \mathcal G(\alpha,\beta)$ and $M_X$ the MGF of $X$ and $f_X$ it's PDF such that
+ Let $X  \sim \mathcal G(\alpha,\beta)$ and $M_X$ the \textbf{MGF} of $X$ and $f_X$ it's \textbf{PDF} such that
+ 
  $f_X(x)=\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-\frac{x}{\beta}}\text{ } \alpha \gt 0 \text{; } \beta \gt 0 \text{; }x\gt 0$
  
  \subsection{Let us show that $M_X(t)=\frac{1}{(1-\beta t)^\alpha}$ if $t\gt \frac{1}{\beta}$}
- 
- 
+Let $t \in \mathbb{R}$
 \begin{align*}
 M_X(t)&=E[e^{tX}]\\
 &=\int_{-\infty}^{+\infty} e^{tx}f_X(x)dx\\
@@ -1015,8 +959,7 @@ M_X(t)&=E[e^{tX}]\\
 &=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{(t-\frac{1}{\beta})x}dx\\
 &=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-(\frac{1}{\beta}-1)x}dx\\
 \end{align*}
-
-Put $y=(\frac{1}{\beta}-1)x$; then 
+Put $y=(\frac{1}{\beta}-1)x$. Then we have
 
 $\begin{cases}
 x=\frac{1}{\frac{1}{\beta}-t}y=\frac{\beta}{1-\beta t}y \\
@@ -1025,7 +968,6 @@ dx=\frac{1}{\frac{1}{\beta}-t}y=\frac{\beta}{1-\beta t}dy \\
 \end{cases}\\ $  
 
 And then we get 
-
 \begin{align*}
 M_X(t)
 &=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-(\frac{1}{\beta}-1)x}dx\\
@@ -1047,20 +989,16 @@ M_X(t)
 	
 	
 	$E(X)=M_X'(0)$
-	
 \begin{align*}
 M_X(t)  
 &=\frac{1}{(1-\beta t)^\alpha} \\
 &=(1-\beta t)^{-\alpha} \\	
 \end{align*}
-	
 \begin{align*}
 M_X'(t)
 &=-\alpha(-\beta)(1-\beta t)^{-\alpha-1} \\
 &=\alpha \beta (1-\beta t)^{-\alpha-1} \\	
 \end{align*}
-	
-
 \begin{align*}
 M_X'(0)  
 &=\alpha \beta (1-0)^{-\alpha-1} \\
@@ -1068,43 +1006,35 @@ M_X'(0)
 &=\alpha \beta \times 1 \\
 &=\alpha \beta \\
 \end{align*}
+Hence $E(X)=\alpha \beta$
 	
-	
-	Hence $E(X)=\alpha \beta$
-	
-	\item[•]Variance $Var(X)$
+\item[•]Variance $Var(X)$
 	
 	$Var(X)=E(X^2)-[E(X)]^2$
 	
 	$E(X^2)=M_X''(0)$
 \end{itemize}
-
 \begin{align*}
 	M_X'(t)  
 	&=\alpha \beta (1-\beta t)^{-\alpha-1} \\
 \end{align*}
-
 \begin{align*}
 M_X''(t)  
 &=\alpha \beta[(-\alpha-1)(-\beta)(1-\beta t)^{-\alpha-1-1}]\\
 &=\alpha \beta[\beta(\alpha+1)(1-\beta t)^{-\alpha-2}]\\
 &=\alpha \beta ^2(\alpha+1)(1-\beta t)^{-\alpha-2}\\
 \end{align*}
-
-
 \begin{align*}
 M_X''(0)  
 &=\alpha \beta^2(\alpha+1)(1-0)^{-\alpha-2}\\&=\alpha \beta^2(\alpha+1)(1)^{-\alpha-2}\\
 &=\alpha \beta^2(\alpha+1)\times 1\\
 &=\alpha \beta^2(\alpha+1)\\
 \end{align*}
-
 Hence 
 
 $E(X^2)=\alpha \beta^2(\alpha+1)$
 
 $Var(X)=E(X^2)-[E(X)]^2$
-
 \begin{align*}
 Var(X)  
 &=E(X^2)-[E(X)]^2\\
@@ -1123,8 +1053,8 @@ Var(X)
  Let $X  \sim \mathcal N(\mu,\sigma^2)$  such that
 
 $\begin{cases}
-            P(X\le 89)=0.90 \\
-            P(X\le 94)=0.95 \\
+            \mathbb{P}(X\le 89)=0.90 \\
+            \mathbb{P}(X\le 94)=0.95 \\
 \end{cases}$
 
 
@@ -1132,22 +1062,20 @@ Let us show that $\mu=71.4$  and that $\sigma^2=189.4$
 
 Let $Z=\frac{X-\mu}{\sigma}$. Then $X=\mu+\sigma Z$ and
 \begin{align*}
-P(X\le 89)&=P(\mu+\sigma Z\le 89)\\
-&=P( Z\le \frac{89-\mu}{\sigma})\\
+\mathbb{P}(X\le 89)&=\mathbb{P}(\mu+\sigma Z\le 89)\\
+&=\mathbb{P}( Z\le \frac{89-\mu}{\sigma})\\
 \end{align*}
-
 And similarly we have
 \begin{align*}
-P(X\le 94)&=P( Z\le \frac{94-\mu}{\sigma})\\
+\mathbb{P}(X\le 94)&=\mathbb{P}( Z\le \frac{94-\mu}{\sigma})\\
 \end{align*}
-
 We know that $Z  \sim \mathcal N(0,1)$.
 
-Let $\Phi$ the CDF of $Z$. Then we have successively
+Let $\Phi$ the \textbf{CDF} of $Z$. Then we have successively
 
 $\begin{cases}
-            P(X\le 89)=0.90=\Phi(\frac{89-\mu}{\sigma}) \\
-            P(X\le 94)=0.95=\Phi(\frac{94-\mu}{\sigma} \\
+            \mathbb{P}(X\le 89)=0.90=\Phi(\frac{89-\mu}{\sigma}) \\
+            \mathbb{P}(X\le 94)=0.95=\Phi(\frac{94-\mu}{\sigma} \\
 \end{cases}$
 
 
@@ -1157,11 +1085,9 @@ $\begin{cases}
 \end{cases}$
 
 $\textcircled{2}-\textcircled{1}$ gives successively
-
 \begin{align*}
 \frac{90-\mu-89+\mu}{\sigma}&=\Phi^{-1}(0.95)-\Phi^{-1}(0.90)\\
 \end{align*}
-
 \begin{align*}
 \frac{5}{\sigma}&=\Phi^{-1}(0.95)-\Phi^{-1}(0.90)\\
 \end{align*}
@@ -1170,14 +1096,13 @@ $\textcircled{2}-\textcircled{1}$ gives successively
 \end{align*}
 
 The relation $\textcircled{1}$ gives successively
-
 \begin{align*}
 89-\mu=\sigma \Phi^{-1}(0.90)\\
 \mu=89-\sigma \Phi^{-1}(0.90)\\
 \end{align*}
 
  
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{26}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k+kn}{import} \PY{n}{norm}
