@@ -1,0 +1,1227 @@
+\documentclass[11pt]{article}
+\usepackage{lipsum} % for dummy text
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+ 
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+   
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{Advanced Statistical Methods for Modeling and Finance: Solutions for exercises}
+\author{Gbètoho Ezéchiel ADEDE}
+
+
+% \date{\today}
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb. 
+    \makeatletter
+        \newbox\Wrappedcontinuationbox 
+        \newbox\Wrappedvisiblespacebox 
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
+        \newcommand*\Wrappedcontinuationindent {3ex } 
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox} 
+        % Take advantage of the already applied Pygments mark-up to insert 
+        % potential linebreaks for TeX processing. 
+        %        {, <, #, %, $, ' and ": go to next line. 
+        %        _, }, ^, &, >, - and ~: stay at end of broken line. 
+        % Use of \textquotesingle for straight quote. 
+        \newcommand*\Wrappedbreaksatspecials {% 
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}% 
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}% 
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}% 
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}% 
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}% 
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}% 
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}% 
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}% 
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}% 
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}% 
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}% 
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}% 
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}% 
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}% 
+        } 
+        % Some characters . , ; ? ! / are not pygmentized. 
+        % This macro makes them "active" and they will insert potential linebreaks 
+        \newcommand*\Wrappedbreaksatpunct {% 
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}% 
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}% 
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}% 
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}% 
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}% 
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}% 
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}% 
+            \catcode`\.\active
+            \catcode`\,\active 
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active 
+            \lccode`\~`\~ 	
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+        
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+    
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+    
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+  
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+\usepackage{titleps}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\footrulewidth}{2pt}
+\fancyhead[L]{\includegraphics[width=1cm]{example-image-a}}
+\fancyhead[C]{}
+\fancyhead[R]{\rightmark}
+\fancyfoot[L]{Exercises}
+\fancyfoot[C]{Gbètoho Ezéchiel ADEDE}
+\fancyfoot[R]{\thepage}
+
+    
+    
+%*****************************
+\begin{document}
+    
+    \maketitle
+    \newpage
+
+    \section{Exercise 1}
+  Let us consider an experience of rolling two(balanced) dice.
+  
+  
+  Let the event E such that
+\begin{equation*}
+E=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}
+\end{equation*} 
+Let us supppose that the dice are cast $N=400$ times and let us find the number of times we should expect to get E occured(at least once).
+
+Let $X$ be the random variable which associates 1 if the event E happens and 0 else. $X  \sim \mathcal B(p=\mathbb{P}(E))$ 
+
+Let Y be the random variable that associates, after N independent rolls of two dice, the number of of trials to get E occured is just N repetitions of the previous Bernoulli experiment, independently and in the same conditions.
+
+Then $Y  \sim \mathcal B(N=400,p=\mathbb{P}(E))$
+
+Let n the number of times we should expect to get the event E occured. Then $n=E(Y)=Np$
+
+
+
+\begin{align*}
+N=400\\
+p
+&=\mathbb{P}(E)\\
+&=\frac{6}{36}\\
+&=\frac{1}{6}\\
+\end{align*}
+
+\begin{align*}
+n=400\times \frac{1}{6}\
+& \approx 66.67\approx 67\\
+\end{align*}
+
+\textbf{Conclusion}\\
+
+We should expect to get the event E occured(at least once) after $67$ throws.
+
+
+\newpage  
+    \section{Exercise 2}
+   
+   Let us consider the ame that consists in flipping a coin twice.
+   There are 4 possibles outcomes. There are:
+   
+   $(T,T)$; $(H,H)$; $(T,H)$ and $(H,T)$
+   
+   Where $T$ means tails and $H$ means head
+   
+   \begin{itemize}
+   \item[•]Let  $A$ "Both flips got head".
+   
+   $P(A)=\frac{1}{4}$
+   
+   \item[•] Let us compute the expected earn after playing $100$ times
+   \begin{itemize}
+   \item We win $100$ DHS if we get 2 heads(with the probability $\frac{1}{4}$)
+   
+  \item We lose $60$ DHS ie we win $100 DHS$ if we get 2 tails(with the probability $\frac{1}{4}$)
+  \item We win nothing ie $O$ DH otherwise(with the probability $\frac{1}{2}$)
+  
+  
+   
+   \end{itemize}
+   
+   The expected amount to earn for a game if we do not consider the bet is 
+  
+\begin{align*}
+E_1 &=100\times \frac{1}{4}-60\times \frac{1}{4}+0 \times \frac{1}{2}\\
+       &=25-15+0\\
+       &=10
+\end{align*}
+
+By considering the bet, the expected amount to earn for a game is. 
+
+$E_2=E_1-20=10-20=-10$
+
+And then We should expect to lose 10 DHS for just a game.
+
+Let
+\begin{align*}
+E &=E_1\times 100-20\\
+       &=10\times 100-20\\
+       &=1000-20\\
+       &=980
+\end{align*} 
+
+Then after playing the game 100 times, if we suppose that we bet the 20 DHS just once, we will epect to earn 980 DHS.
+   
+   \end{itemize}
+   
+   
+\newpage 
+    \section{Exercise 3}
+    
+    Let us construct a random variable for exercise 2
+    
+    Let $\Omega=\{(T,T);(H,H); (T,H); (H,T)\}$
+
+Where $T$ means tails and $H$ means head
+
+Let us consider the random variable Y defined from $\Omega$ to the set of possible earns which is $\{100,-60,0\}$
+    
+\newpage 
+    \section{Exercise 4}
+    
+    Let $X$ be a random variable such that
+    $ P[(a, b)] = b − a, 0 \lt a \lt b \lt 1]$
+    
+    \subsection{Let us find the PDF $f$ of $X$}
+    
+    Firstly, let us find the CDF $F$ of $X$
+    
+    Let $t \in \mathbb{R}$
+    
+    $F(t)=\mathbb{P}(X\le t)$
+    \begin{itemize}
+    \item[•] Let $t\le 0$
+    
+    \begin{align*}
+\mathbb{P}(X\le t) &=\mathbb{P}(X\le t \lt 0)\\
+       &=\mathbb{P}(X\lt 0)\\
+       &=\mathbb{P}(X\in ]-\infty ;0])\\
+       &=0\\
+\end{align*}
+
+\item[•] Let $t\in ]0;1[$
+    
+    \begin{align*}
+\mathbb{P}(X\le t)
+       &=\mathbb{P}(X\in ]0 ;t[)\\
+       &=\mathbb{P}[(0 ,t)]\\
+       &=t-0\\
+       &=t\\
+\end{align*}
+
+\item[•] Let $t\in ]1; +\infty[$ 
+    
+    \begin{align*}
+\mathbb{P}(X\le t)
+       &=\mathbb{P}(X\in [0 ;1[\cup [1;t[)\\
+       &=\mathbb{P}(X\in [0 ;1[)+\mathbb{P}(X\in [1;t[)\\
+       &=\mathbb{P}([0 ;1[)+\mathbb{P}([1;t[)\\
+       &=1+0\\
+       &=1\\
+\end{align*} 
+
+    \end{itemize}
+    
+    
+  Therefore
+  
+  \begin{align*}
+F(t) = \begin{cases}
+            0 & \text{if } t \le 0\\
+            t & \text{if } 0 \lt t \lt 1\\
+            1 & \text{if } t \geq 1\\
+        \end{cases}
+\end{align*}
+    
+And then 
+
+  \begin{align*}
+f(t)=F'(t) &= \begin{cases}
+            0 & \text{if } t \le 0\\
+            1 & \text{if } 0 \lt t \lt 1\\
+            0 & \text{if } t \geq 1\\
+        \end{cases}\\
+        &=\begin{cases}
+        1 & \text{if } 0 \lt t \lt 1\\
+            0 & \text{else }\\
+        \end{cases}
+\end{align*} 
+    
+\subsection{Let us find $\mathbb{P}([0.2 ;0.4[\cup [0.7;0.85[)$}
+
+\begin{align*}
+\mathbb{P}([0.2 ;0.4[\cup [0.7;0.85[)
+       &=\mathbb{P}([0.2 ;0.4[)+\mathbb{P}([0.7;0.85[)\\
+       &=(0.4-0.2)+(0.85-0.7)\\
+       &=0.2+0.15\\
+       &=0.2+0.15\\
+       &=0.35
+\end{align*}
+   
+\newpage 
+    \section{Exercise 5}
+    
+    Let us suppose a random variable $X$ has it's CDF defined by:\\
+    
+\begin{align*}
+F(x) = \begin{cases}
+            0 & \text{if } x \lt 0\\
+            \frac{x}{200} & \text{if } 0 \lt x \lt 100\\
+            1 & \text{if } x \geq 100\\
+        \end{cases}
+\end{align*}
+
+\subsection{The graph of F}
+
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{n}{F}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:}\PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{l+m+mi}{0}\PY{o}{\PYZlt{}}\PY{n}{x} \PY{o+ow}{and} \PY{n}{x}\PY{o}{\PYZlt{}}\PY{l+m+mi}{100}\PY{p}{,}\PY{n}{x}\PY{o}{/}\PY{l+m+mi}{200}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{n}{x}\PY{o}{\PYZlt{}}\PY{l+m+mi}{0} \PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} 
+\PY{n}{x}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1000}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{p}{[}\PY{n}{F}\PY{p}{(}\PY{n}{i}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{x}\PY{p}{]}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F(x)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lower right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)} 
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{plotF.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    
+\subsection{Let's compute the following probabilities}
+\subsubsection*{a)$P(-50\lt X \lt 50)$}
+\begin{align*}
+P(-50\lt X \lt 50) &=F(50)-F(-50)\\
+\end{align*}
+
+\begin{align*}
+50\in  \left[0 ; 100\right] \Rightarrow F(50)&=\frac{50}{200}\\
+ &=\frac{1}{4}
+\end{align*}
+
+
+\begin{align*}
+-50\in  \left]-\infty ; 0\right[ \Rightarrow F(-50)&=0
+\end{align*}
+
+Then we have
+\begin{align*}
+P(-50\lt X \lt 50) &=\frac{1}{4}-0\\
+				  &=\frac{1}{4}
+\end{align*}
+
+\subsubsection*{b)$P(X=0)$}
+
+\begin{align*}
+P(X=0) &=F(0)-\lim_{{x \to 0^-}} F(x)\\	
+       &=\frac{0}{200}-\lim_{{x \to 0^-}} 0\\
+       &=0
+\end{align*}
+
+
+\subsubsection*{c)$P(X=100)$}
+
+\begin{align*}
+P(X=100) &=F(100)-\lim_{{x \to 100^-}} F(x)\\	
+       &=1-\lim_{{x \to 100^-}} \frac{x}{200}\\
+       &=1-\frac{100}{200}\\
+       &=1-\frac{1}{2}\\
+       &=\frac{1}{2}
+\end{align*}
+
+\newpage 
+    \section{Exercise 6}
+    Let us suppose a random variable $X$ has it's PDF defined by:\\
+    
+\begin{align*}
+f(x) = \begin{cases}
+            kx^2 & \text{if } 0 \leq x \leq 10 \\
+            0 & \text{if } x \gt 10.
+        \end{cases}
+\end{align*}
+
+
+
+Let us find $P(7 \lt X \lt 15)$
+
+Let us note $F$ the CDF of $X$
+
+\begin{align*}
+P(7 \lt X \lt 15) &= F(15)-F(7) \\
+\end{align*}
+$\forall x\ge 0 $, we have:
+\begin{align*}
+F(x) &=\int_\mathbb{-\infty}^x f(t)dt\\
+&=\int_{-\infty}^{0} f(t)dt+ \int_0^{x} f(t)dtdt\\
+				  &=0+ \int_0^{x} f(t)dt\\
+				  &=\int_0^{x} f(t)dt\\
+\end{align*}
+$t \in \left[0 ; x\right] \iff 0 \le t \le x$
+
+\begin{itemize}
+\item[•] If $x \le 10$, then $0 \le t \le x \le 10$ ie $0 \le t \le 10$ and then $f(t)=2kt^2$
+
+So 
+
+\begin{align*}
+F(x) &=\int_{0}^x 2kt^2dt\\
+&=\frac{2}{3}k\left[t^3\right]_0^x \\
+&=\frac{2}{3}kx^3 \\
+\end{align*}
+
+\item[•] If $x \ge 10$, then we have:
+
+\begin{align*}
+F(x) &=\int_{0}^{10} f(t)dt+\int_{10}^x f(t)dt\\
+&=\int_{0}^{10} f(t)dt+0\\
+&=\int_{0}^{10} 2kt^2dt \\
+&=\frac{2}{3}k\left[t^3\right]_0^{10} \\
+&=\frac{2}{3} 10^3 k \\
+&=\frac{2000k}{3}
+\end{align*}
+
+\end{itemize}
+
+\begin{align*}
+F(x) = \frac{2}{3}k\begin{cases}
+            x^3 & \text{if } 0 \leq x \leq 10 \\
+            1000 & \text{if } x \gt 10.
+        \end{cases}
+\end{align*}
+
+
+
+Let us determine $k$.
+
+\begin{align*}
+\int_\mathbb{R} f(t)dt &=\int_\mathbb{-\infty}^0 f(t)dt + \int_0^{10} f(t)dt +\int_{10}^{+\infty} f(t)dt\\
+				  &=0+ \int_0^{10} 2kt^2dtdt+0\\
+				  &=2k[\frac{1}{3}t^3]_0^{10}\\
+				  				  								  &=\frac{2k}{3}[t^3]_0^{10}\\
+				  				  								  &=\frac{2k}{3}[t^3]_0^{10}\\
+				  				  								  &=\frac{2k}{3}(10^3-0^3)\\
+				  				  								  &=\frac{2k}{3}(1000)\\
+				  				  								  &=\frac{2000k}{3}\\
+\end{align*}
+
+$f$ is a PDF, then $\int_\mathbb{R} f(t)dt=1$
+
+ \begin{align*}
+  \int_\mathbb{R} f(t)dt=1 & \Rightarrow \frac{2000k}{3} =1\\ 
+ 			 &\Rightarrow 2000k=3\\
+ 			 &\Rightarrow k=\frac{3}{2000}\\  
+\end{align*}
+
+
+And then
+
+\begin{align*}
+F(x) &= \frac{2}{3}\times \frac{3}{2000} \begin{cases}
+            x^3 & \text{if } 0 \leq x \leq 10 \\
+            1000 & \text{if } x \gt 10.
+        \end{cases}\\
+        &=\frac{1}{1000} \begin{cases}
+            x^3 & \text{if } 0 \leq x \leq 10 \\
+            1000 & \text{if } x \gt 10.
+        \end{cases}\\
+         &= \begin{cases}
+            \frac{1}{1000}x^3 & \text{if } 0 \leq x \leq 10 \\
+            1 & \text{if } x \gt 10.
+        \end{cases}\\        
+\end{align*}
+
+
+$15 \gt 10 $ then $F(15)=1$
+
+$7 \in \left[0 ; 10\right] $ then $F(7)=\frac{7^3}{1000}=\frac{343}{1000}$
+\begin{align*}
+P(7 \lt X \lt 15) &= F(15)-F(7) \\
+`                 &=1-\frac{343}{1000}\\ 
+ 			 	  &=\frac{1000-343}{1000}\\
+ 			 	  &= 3\times \frac{16}{2000}\\
+ 			 	  &= \frac{357}{1000}\\  
+\end{align*}
+
+
+
+
+    
+    
+    
+    
+\newpage 
+    \section{Exercise 7}
+    Let 
+    \begin{itemize}
+    \item[•] X be a random variable with f as PDF, such that
+      $ f(t)=\frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}t^2 ) ; t\in \mathbb{R}$
+      \item[•] $Y=X^2$ another random variable.
+      \item[•] $F_X$ the CDF of X
+      \item[•] $F_Y$ the CDF of Y
+      \item[•] $f_Y$ the PDF of Y
+    \end{itemize}
+    Let us show that $f_Y(y)=\frac{1}{\sqrt{2\pi y}}\exp(-\frac{y}{2}) \forall t\in \mathbb{R}$
+   $\forall t\in \mathbb{R}$, we have:
+   
+\begin{align*}
+    F_Y(t) &= P(Y < t) \\
+           &= P(X^2 < t) \\
+           &= P(Y < \sqrt{t})\\
+           &= P(\lvert x \rvert < \sqrt{t}) \text{ since } X^2 \lt t \Rightarrow t \gt 0\\           
+           &= P(-\sqrt{t} \lt  \sqrt{t} \lt \sqrt{t} ) \\ 
+           &=  F_X(\sqrt{t})-F_X(-\sqrt{t})                    
+\end{align*}
+
+\begin{align*}
+    f_Y(t) &= F_Y'(t) \\
+           &= \frac{1}{2\sqrt{t}}F_X'(\sqrt{t})-(-\frac{1}{2\sqrt{t}})F_X'(\sqrt{t}) \\
+          &= \frac{1}{2\sqrt{t}}f(\sqrt{t})-(-\frac{1}{2\sqrt{t}})f(-\sqrt{t}) \\                                          
+          &= \frac{1}{2\sqrt{t}}f(\sqrt{t})+\frac{1}{2\sqrt{t}}f(-\sqrt{t}) \\                                          
+          &= \frac{1}{2\sqrt{t}}[f(\sqrt{t})+f(-\sqrt{t})] \\
+          &= \frac{1}{2\sqrt{t}}(2)(\frac{1}{\sqrt{2\pi}} exp(-\frac{1}{2}t )) \\          
+           &= \frac{1}{\sqrt{t}}\frac{1}{\sqrt{2\pi}} exp(-\frac{1}{2}t ) \\ 
+           &=\frac{1}{\sqrt{2\pi y}}\exp(-\frac{t}{2})         
+\end{align*}
+
+     
+\newpage 
+    \section{Exercise 8}
+Let X be a random variable such that $Var(X)$ exists .
+
+
+Let's show that 
+$Var(X)=E(X^2)-\mu^2$  where $\mu=E(X)$ 
+
+We have by definition:
+
+\begin{align*}
+    Var(X) &= E([X-E(X)]^2) \\
+           &= E(X^2-2XE(X)+(E(X))^2) \\
+           &= E(X^2-2\mu X+\mu^2) \\
+           &= E(X^2-2\mu X+\mu^2)\text{ with } \mu=E(X) \\           
+           &=  E(X^2)-2\mu E(X)+\mu^2\\      
+           &=  E(X^2)-2\mu\mu+\mu^2\text{ because } E(X)=\mu \\  
+           &=  E(X^2)-2\mu^2+\mu^2 \\
+           &=  E(X^2)-\mu^2 \\                                    
+\end{align*}
+Hence the result.
+
+
+
+\newpage 
+    \section{Exercise 9}
+    Let X a discrete random variable with pmf f positive at -1, 0,1 and zero elsewhere.
+    \subsection{a) Let us find $E(X) \text{ if } p(0)=\frac{1}{4}$}
+ \begin{align*}
+  E(X^2) &= (-1)^2p(-1)+(0)^2p(0)+(1)^2p(1)+0 \\
+       &=p(-1)+p(1) \\       
+\end{align*}   
+
+We have
+
+\begin{align*}
+  p(-1)+p(0)+p(1)+0 &= p(-1)+p(0)+p(1)\\ 
+  					&= p(-1)+\frac{1}{4}+p(1)      \text{ since } p(0)= \frac{1}{4}
+\end{align*}
+Then 
+ 
+\begin{align*}
+  p(-1)+p(1) &= 1-p(0)\\ 
+  			&= 1-\frac{1}{4}\\
+  			&= \frac{3}{4}\\
+\end{align*} 
+And then $E(X^2)=\frac{3}{4}$ 
+
+   \subsection{a) Let us find $p(-1)\text{ and } p(1) \text{ if } p(0)=\frac{1}{4} \text{ and if } E(X)= 1$}
+   
+  \begin{align*}
+  E(X) &= (-1)p(-1)+(0)p(0)+(1)p(1)+0 \\
+       &=p(1)-p(-1) \\       
+\end{align*} 
+
+\begin{align*}
+  E(X)= 1 & \Rightarrow p(1)-p(-1)= 1\\
+       &=\Rightarrow p(1)=1+p(-1) \text{ } \textcircled{1}      
+\end{align*}
+$p(-1)+p(0)+p(1)=1$ and $ p(0)=\frac{1}{4}$
+
+Then we get:
+
+\begin{align*}
+  p(-1)+p(1) &=  1-\frac{1}{4}\\ 
+ 			 &= \frac{3}{4}\\    
+\end{align*}
+
+And then $p(1)=\frac{3}{4}-P(-1) \textbf{ } \textcircled{2} $
+
+\begin{align*}
+  \textcircled{1} = \textcircled{2} & \Rightarrow  1+p(-1)=\frac{3}{4}-p(-1)\\ 
+ 			 &\Rightarrow 2p(-1)=\frac{3}{4}-1\\
+ 			 &\Rightarrow 2p(-1)=-\frac{1}{4}\\  
+ 			 &\Rightarrow p(-1)=-\frac{1}{8} \textbf{(an error?)        }    
+\end{align*}
+Hence
+
+\begin{align*}
+p(-1)&=\frac{3}{4}-p(-1)\\
+	 &=\frac{3}{4}+\frac{1}{8}\\
+	 &=\frac{24+4}{4\times 8}\\
+	 &=\frac{28}{32}\\
+	 &=\frac{7}{8}\\
+\end{align*}
+  
+   
+\newpage 
+    \section{Exercise 10}
+   
+   Let X a continous random variable with pdf f, such that $f(x)=\frac{1}{3} \text{ for } -1 \lt x \lt 2$
+   
+   
+   Let $M_X$ the moment generating function of $X$
+   
+   Let $t \in \left]-1 ; 2\right[
+ $
+  
+  \begin{align*}
+M_X(t)&=E(e^tX)\\
+	 &=\int_\mathbb{R} e^{tx}f(x)dx\\
+	 &=\int_{-\infty}^{-1} e^{tx}f(x)dx+\int_{-1}^2 e^{tx}f(x)dx+\int_{2}^{+\infty} e^{tx}f(x)dx\\
+	 &=0+\int_{-1}^2 \frac{1}{3}e^{tx}dx+0\\
+	 &=\frac{1}{3}\int_{-1}^2 e^{tx}dx\\
+\end{align*}
+When $t \neq 0$, we have:
+
+ 
+  \begin{align*}
+M_X(t) &=\frac{1}{3}[\frac{1}{t}e^{tx}]_{-1}^2 \\ 
+	  &=\frac{1}{3t}[e^{tx}]_{-1}^2 \\
+	  &=\frac{1}{3t}(e^{2t}-e^{-t}) \\
+\end{align*}
+   
+
+
+ 
+\newpage 
+    \section{Exercise 11}
+   Let $X  \sim \mathcal B(n,p)$ and $M_X$ the MGF of $X$
+   
+   Let us show that $M_X(t)=(1-p+pe^t)^n \text{ } \forall t \in \mathbb{R}$
+   
+   
+   
+   
+Let $q=1-p$
+
+We have $\mathbb{P}(X=k)=\binom{n}{k}p^k q^{n-k} \forall \text{ } k \in \{0, 1, \ldots, n\} $
+
+Let $t \in \mathbb{R}$
+  \begin{align*}
+M_X(t) &=E(e^{tX})\\ 
+	  &=\Sigma_{i=1}^{n}{ e^{tk} P(Y=k)}\\   
+	   &=\Sigma_{i=1}^{n}{ e^{tk} \binom{n}{k}p^k q^{n-k}}\\
+	   &=\Sigma_{i=1}^{n}{ p^k (e^{t})^k \binom{n}{k}q^{n-k}}\\
+	   &=\Sigma_{i=1}^{n}{(pe^{t})^k \binom{n}{k}q^{n-k}}\\
+	   &=\Sigma_{i=1}^{n}{a^k \binom{n}{k}b^{n-k}} \textbf{ with } a =pe^t \text{and }  b=q\\	
+	   &=(a+b)^n \text{ from Newten's binomial formula}\\
+	   &=(pe^t+1-p)^n \text{ since } a =pe^t \text{ and }  b=q\\
+	   &=(1-p+pe^t)^n	  	  
+\end{align*}
+Hence the result.
+   
+
+\newpage 
+    \section{Exercise 12}
+    
+   
+   Let X a random variable that has a Poisson ditribution with $\lambda$ as parameter
+   
+   We have:
+   
+    $P(X=k)=\frac{\lambda^{k} e^{-\lambda}}{k! } \text{ for k in } \mathbb{N}$
+   
+   
+   Let $M_X$ the moment generating function of $X \textbf{ and }  t \in \mathbb{R}$
+  
+  \subsection{Let us show that $M_X(t)=e^{\lambda(e^t-1)}$} 
+   
+  
+  \begin{align*}
+M_X(t)&=E(e^tX)\\
+	&=\Sigma_{k\in \mathbb{N}  }e^{tk}\mathbb{P}(X=k)  \\
+	&=\Sigma_{k\in \mathbb{N}  }e^{tk}\frac{\lambda^{k} e^{-\lambda}}{k!}  \\
+	&=\Sigma_{k\in \mathbb{N}  }\frac{e^{tk}\lambda^{k} e^{-\lambda}}{k!}  \\
+	 &=\Sigma_{k\in \mathbb{N}  }\frac{(e^{t})^k\lambda^{k} e^{-\lambda}}{k!}  \\
+	 &=\Sigma_{k\in \mathbb{N}  }\frac{(\lambda e^{t})^k e^{-\lambda}}{k!}  \\
+\end{align*}
+$\forall x \in \mathbb{R}\text{, } e^x= \Sigma_{n\in \mathbb{N}  }\frac{x^{n}}{n!}$
+
+Then we have:
+
+\begin{align*}
+M_X(t)&=e^{-\lambda}e^{\lambda e^t}\\
+	&=e^{-\lambda+\lambda e^t}\\
+	&=e^{\lambda e^t-\lambda}\\
+	&=e^{\lambda( e^t-1)}
+\end{align*}
+Hence $M_X(t)=e^{\lambda( e^t-1)}$
+   
+\subsection{Let us find it's mean and variance}
+
+Let $t \in \mathbb{R}$
+\begin{itemize}
+\item[•]Mean $E(X)$
+
+$E(X)=M_X'(0)$
+
+
+
+$M_X(t)=e^{\lambda( e^t-1)}$
+
+\begin{align*}
+M_X'(t)&=\lambda e^{t}e^{\lambda( e^t-1)}\\
+      &=\lambda e^{t}M_X(t)
+\end{align*}
+$M_X(0)=e^{e^{0}-1}=e^0=1$
+
+\begin{align*}
+M_X'(0)&=\lambda e^{0}M_X(0)\\
+	   &=\lambda (1)\\
+	   &=\lambda\\
+\end{align*}
+
+Then $E(X)=\lambda$
+
+\item[•]Variance $Var(X)$
+\end{itemize}
+$var(X)=E(X^2)-(E(X))^2$ with $E(X^2)=M_X''(0)$
+
+\begin{align*}
+M_X''(t)&=(M_X')'(t)
+\end{align*}
+
+\begin{align*}
+M_X'(t)&=\lambda e^{t}M_X(t)\\
+\end{align*}
+
+\begin{align*}
+M_X''(t)&=\lambda[ e^{t}M_X(t)+e^{t}M_X'(t)]\\
+&=\lambda e^{t}[ M_X(t)+M_X'(t)]\\
+\end{align*}
+
+
+\begin{align*}
+M_X''(0)&=\lambda e^{0}[ M_X(0)+M_X'(0)]\\
+        &=\lambda (1)[ 1+\lambda]\\
+        &=\lambda (1+\lambda)\\
+\end{align*}
+
+Then $E(X^2)=\lambda (1+\lambda)$ and then 
+
+\begin{align*}
+Var(X)&=\lambda (1+\lambda)- \lambda ^2\\
+        &=\lambda +\lambda ^2 -\lambda ^2]\\
+        &=\lambda 
+\end{align*}
+\newpage 
+\section{Exercise 13}
+ Let $X  \sim \mathcal G(\alpha,\beta)$ and $M_X$ the MGF of $X$ and $f_X$ it's PDF such that
+ $f_X(x)=\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-\frac{x}{\beta}}\text{ } \alpha \gt 0 \text{; } \beta \gt 0 \text{; }x\gt 0$
+ 
+ \subsection{Let us show that $M_X(t)=\frac{1}{(1-\beta t)^\alpha}$ if $t\gt \frac{1}{\beta}$}
+ 
+ 
+\begin{align*}
+M_X(t)&=E[e^{tX}]\\
+&=\int_{-\infty}^{+\infty} e^{tx}f_X(x)dx\\
+&=\int_{0}^{+\infty} e^{tx}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-\frac{x}{\beta}}dx\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{tx-\frac{x}{\beta}}dx\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{(t-\frac{1}{\beta})x}dx\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-(\frac{1}{\beta}-1)x}dx\\
+\end{align*}
+
+Put $y=(\frac{1}{\beta}-1)x$; then 
+
+$\begin{cases}
+x=\frac{1}{\frac{1}{\beta}-t}y=\frac{\beta}{1-\beta t}y \\
+dx=\frac{1}{\frac{1}{\beta}-t}y=\frac{\beta}{1-\beta t}dy \\
+            
+\end{cases}\\ $  
+
+And then we get 
+
+\begin{align*}
+M_X(t)
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} x^{\alpha-1}e^{-(\frac{1}{\beta}-1)x}dx\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} {(\frac{\beta}{1-\beta t}y) }^{\alpha-1}e^{-y}\frac{\beta}{1-\beta t}dy\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} {(\frac{\beta}{1-\beta t}) }^{\alpha-1}\frac{\beta}{1-\beta t} y ^{\alpha-1}e^{-y}dy\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times \beta ^\alpha} {(\frac{\beta}{1-\beta t}) }^{\alpha} y^{\alpha-1} e^{-y}dy\\
+&=\int_{0}^{+\infty}\frac{\beta^\alpha}{\Gamma(a)\times \beta ^\alpha (1-\beta t)^\alpha} y^{\alpha-1} e^{-y}dy\\
+&=\int_{0}^{+\infty}\frac{1}{\Gamma(a)\times (1-\beta t)^\alpha} y^{\alpha-1} e^{-y}dy\\
+&=\frac{1}{\Gamma(a)\times (1-\beta t)^\alpha}\int_{0}^{+\infty} y^{\alpha-1} e^{-y}dy\\
+&=\frac{1}{\Gamma(a)\times (1-\beta t)^\alpha}\Gamma(a) \\
+&=\frac{1}{(1-\beta t)^\alpha} \\
+\end{align*}    
+
+
+\subsection{Mean and variance of Gamma distribution}
+
+\begin{itemize}
+	\item[•]Mean $E(X)$
+	
+	
+	$E(X)=M_X'(0)$
+	
+\begin{align*}
+M_X(t)  
+&=\frac{1}{(1-\beta t)^\alpha} \\
+&=(1-\beta t)^{-\alpha} \\	
+\end{align*}
+	
+\begin{align*}
+M_X'(t)
+&=-\alpha(-\beta)(1-\beta t)^{-\alpha-1} \\
+&=\alpha \beta (1-\beta t)^{-\alpha-1} \\	
+\end{align*}
+	
+
+\begin{align*}
+M_X'(0)  
+&=\alpha \beta (1-0)^{-\alpha-1} \\
+&=\alpha \beta (1)^{-\alpha-1} \\
+&=\alpha \beta \times 1 \\
+&=\alpha \beta \\
+\end{align*}
+	
+	
+	Hence $E(X)=\alpha \beta$
+	
+	\item[•]Variance $Var(X)$
+	
+	$Var(X)=E(X^2)-[E(X)]^2$
+	
+	$E(X^2)=M_X''(0)$
+\end{itemize}
+
+\begin{align*}
+	M_X'(t)  
+	&=\alpha \beta (1-\beta t)^{-\alpha-1} \\
+\end{align*}
+
+\begin{align*}
+M_X''(t)  
+&=\alpha \beta[(-\alpha-1)(-\beta)(1-\beta t)^{-\alpha-1-1}]\\
+&=\alpha \beta[\beta(\alpha+1)(1-\beta t)^{-\alpha-2}]\\
+&=\alpha \beta ^2(\alpha+1)(1-\beta t)^{-\alpha-2}\\
+\end{align*}
+
+
+\begin{align*}
+M_X''(0)  
+&=\alpha \beta^2(\alpha+1)(1-0)^{-\alpha-2}\\&=\alpha \beta^2(\alpha+1)(1)^{-\alpha-2}\\
+&=\alpha \beta^2(\alpha+1)\times 1\\
+&=\alpha \beta^2(\alpha+1)\\
+\end{align*}
+
+Hence 
+
+$E(X^2)=\alpha \beta^2(\alpha+1)$
+
+$Var(X)=E(X^2)-[E(X)]^2$
+
+\begin{align*}
+Var(X)  
+&=E(X^2)-[E(X)]^2\\
+&=\alpha \beta^2(\alpha+1)-(\alpha \beta)^2\\
+&=\alpha \beta^2(\alpha+1)-\alpha ^2 \beta ^2\\
+&= \beta ^2 [\alpha(\alpha+1)-\alpha^2]\\
+&= \beta ^2 [\alpha^2 +\alpha-\alpha^2]\\
+&= \beta ^2 (\alpha)\\
+&=  \alpha \beta ^2\\
+\end{align*}
+
+
+\newpage 
+
+\section{Exercise 14}
+ Let $X  \sim \mathcal N(\mu,\sigma^2)$  such that
+
+$\begin{cases}
+            P(X\le 89)=0.90 \\
+            P(X\le 94)=0.95 \\
+\end{cases}$
+
+
+Let us show that $\mu=71.4$  and that $\sigma^2=189.4$
+
+Let $Z=\frac{X-\mu}{\sigma}$. Then $X=\mu+\sigma Z$ and
+\begin{align*}
+P(X\le 89)&=P(\mu+\sigma Z\le 89)\\
+&=P( Z\le \frac{89-\mu}{\sigma})\\
+\end{align*}
+
+And similarly we have
+\begin{align*}
+P(X\le 94)&=P( Z\le \frac{94-\mu}{\sigma})\\
+\end{align*}
+
+We know that $Z  \sim \mathcal N(0,1)$.
+
+Let $\Phi$ the CDF of $Z$. Then we have successively
+
+$\begin{cases}
+            P(X\le 89)=0.90=\Phi(\frac{89-\mu}{\sigma}) \\
+            P(X\le 94)=0.95=\Phi(\frac{94-\mu}{\sigma} \\
+\end{cases}$
+
+
+$\begin{cases}
+     \frac{89-\mu}{\sigma}=\Phi^{-1}(0.90)\textcircled{1}\\
+     \frac{90-\mu}{\sigma}=\Phi^{-1}(0.95)\textcircled{2}\\
+\end{cases}$
+
+$\textcircled{2}-\textcircled{1}$ gives successively
+
+\begin{align*}
+\frac{90-\mu-89+\mu}{\sigma}&=\Phi^{-1}(0.95)-\Phi^{-1}(0.90)\\
+\end{align*}
+
+\begin{align*}
+\frac{5}{\sigma}&=\Phi^{-1}(0.95)-\Phi^{-1}(0.90)\\
+\end{align*}
+\begin{align*}
+\sigma &=\frac{5}{\Phi^{-1}(0.95)-\Phi^{-1}(0.90)} \\
+\end{align*}
+
+The relation $\textcircled{1}$ gives successively
+
+\begin{align*}
+89-\mu=\sigma \Phi^{-1}(0.90)\\
+\mu=89-\sigma \Phi^{-1}(0.90)\\
+\end{align*}
+
+ 
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{26}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k+kn}{import} \PY{n}{norm}
+\PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k+kn}{import} \PY{n}{power}
+
+\PY{n}{p1} \PY{o}{=} \PY{l+m+mf}{0.90}
+\PY{n}{p2}\PY{o}{=}\PY{l+m+mf}{0.95}
+
+\PY{n}{sigma}\PY{o}{=}\PY{l+m+mi}{5}\PY{o}{/}\PY{p}{(}\PY{n}{norm}\PY{o}{.}\PY{n}{ppf}\PY{p}{(}\PY{n}{p2}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{norm}\PY{o}{.}\PY{n}{ppf}\PY{p}{(}\PY{n}{p1}\PY{p}{)}\PY{p}{)}
+\PY{n}{sigma\PYZus{}squared}\PY{o}{=}\PY{n}{power}\PY{p}{(}\PY{n}{sigma}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+\PY{n}{mu}\PY{o}{=}\PY{l+m+mi}{89}\PY{o}{\PYZhy{}}\PY{n}{sigma}\PY{o}{*}\PY{n}{norm}\PY{o}{.}\PY{n}{ppf}\PY{p}{(}\PY{l+m+mf}{0.90}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sigma squared:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{sigma\PYZus{}squared}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mu:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{mu}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sigma squared: 189.4106020419289
+mu: 71.36245122609756
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+
+\end{tcolorbox}
+
+Hence we have approximatively
+
+$\mu=71.4$  and $\sigma^2=189.4$
+
+
+
+
+
+
+   
+   
+
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
